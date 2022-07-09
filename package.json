@@ -69,7 +69,7 @@
   },
   "scripts": {
     "start:ui": "node client/scripts/start.js",
-    "start:server": "node server.js",
+    "start:server": "node server/server.js",
     "build:ui": "node client/scripts/build.js",
     "test:ui": "node client/scripts/test.js"
   },

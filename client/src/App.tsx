@@ -15,8 +15,8 @@ function App() {
   const [inputValue, setInputValue] = React.useState<string>('');
 
   React.useEffect(() => {
-    const initDoc = Automerge.init();
-    const getLocalBinary = async () => {
+    // const initDoc = Automerge.init();
+    const getDocument = async () => {
       const binary = await localforage.getItem<Automerge.BinaryDocument>(docId);
       if (binary) {
         setDoc(Automerge.load(binary));
@@ -34,7 +34,7 @@ function App() {
     //   setDoc(newDoc);
     // };
 
-    getLocalBinary();
+    getDocument();
     // loadFromRemote();
   }, []);
 
