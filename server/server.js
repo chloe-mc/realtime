@@ -22,6 +22,18 @@ try {
 
 app.use(cors());
 
+app.get('/lists', (req, res) => {
+  const dataDirectory = path.join(__dirname, 'data');
+  return fs.readdir(dataDirectory, (err, dirs) => {
+    if (err) {
+      console.error(err);
+      res.status(404).send('No lists');
+    } else {
+      res.send(dirs);
+    }
+  });
+});
+
 app.get('/:id', (req, res) => {
   let id = req.params.id;
   let filename = path.join(__dirname, 'data', id);
@@ -31,7 +43,6 @@ app.get('/:id', (req, res) => {
       res.status(404).send('Not found');
     } else {
       res.sendFile(filename);
-      console.log('sending');
     }
   });
 });
